@@ -11,6 +11,7 @@ class email {
   void set_ID_MSG(int id);
   std::string get_mensagem();
   void set_mensagem(std::string msg);
+  bool Vazio();
 
  private:
   int ID_USER;

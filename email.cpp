@@ -17,3 +17,5 @@ void email::set_ID_MSG(int id) { this->ID_MSG = id; }
 string email::get_mensagem() { return this->mensagem; }
 
 void email::set_mensagem(std::string msg) { this->mensagem = msg; }
+
+bool email::Vazio() { return this->get_ID_MSG() == 0; };
