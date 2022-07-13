@@ -77,12 +77,14 @@ string ArvoreBinaria::RemoveRecursivo(No*& p, int chave) {
       p = p->dir;
       free(aux);
       return "OK: MENSAGEM APAGADA";
-    } else
+    } else {
       Antecessor(p, p->esq);
+      return "OK: MENSAGEM APAGADA";
+    }
   }
 };
 
-string ArvoreBinaria::Antecessor(No* q, No*& r) {
+void ArvoreBinaria::Antecessor(No* q, No*& r) {
   if (r->dir != nullptr) {
     Antecessor(q, r->dir);
     return;
@@ -91,5 +93,4 @@ string ArvoreBinaria::Antecessor(No* q, No*& r) {
   q = r;
   r = r->esq;
   free(q);
-  return "OK: MENSAGEM APAGADA";
 };

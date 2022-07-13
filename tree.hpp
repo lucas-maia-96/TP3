@@ -26,8 +26,7 @@ class ArvoreBinaria {
   void ApagaRecursivo(No* p);
   string PesquisaRecursivo(No* p, int chave);
   string RemoveRecursivo(No*& p, int chave);
-  string Antecessor(No* q, No*& r);
-  void PorNivel();
+  void Antecessor(No* q, No*& r);
 
   No* raiz;
 };
