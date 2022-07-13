@@ -3,9 +3,9 @@
 class Hash_AB {
  public:
   Hash_AB(int tam);
-  email Pesquisa(int chave);
-  void Insere(email item);
-  void Remove(int chave);
+  string Pesquisa(int id_user, int id_msg);
+  string Insere(email item);
+  string Remove(int chave);
 
  private:
   int M;

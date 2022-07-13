@@ -11,11 +11,13 @@ ArvoreBinaria::~ArvoreBinaria() { Limpa(); };
 
 void ArvoreBinaria::Insere(email item) { InsereRecursivo(raiz, item); };
 
-email ArvoreBinaria::Pesquisa(int chave) {
+string ArvoreBinaria::Pesquisa(int chave) {
   return PesquisaRecursivo(raiz, chave);
 };
 
-void ArvoreBinaria::Remove(int chave) { return RemoveRecursivo(raiz, chave); };
+string ArvoreBinaria::Remove(int chave) {
+  return RemoveRecursivo(raiz, chave);
+};
 
 void ArvoreBinaria::Limpa() {
   ApagaRecursivo(raiz);
@@ -42,23 +44,23 @@ void ArvoreBinaria::ApagaRecursivo(No* p) {
   }
 };
 
-email ArvoreBinaria::PesquisaRecursivo(No* p, int chave) {
+string ArvoreBinaria::PesquisaRecursivo(No* p, int chave) {
   email aux;
   if (p == nullptr) {
-    cout << "CONSULTA U E: MENSAGEM INEXISTENTE";
+    return "MENSAGEM INEXISTENTE";
   }
   if (chave < p->item.get_ID_MSG())
     return PesquisaRecursivo(p->esq, chave);
   else if (chave > p->item.get_ID_MSG())
     return PesquisaRecursivo(p->dir, chave);
   else
-    return p->item;
+    return p->item.get_mensagem();
 };
 
-void ArvoreBinaria::RemoveRecursivo(No*& p, int chave) {
+string ArvoreBinaria::RemoveRecursivo(No*& p, int chave) {
   No* aux;
   if (p == nullptr) {
-    cout << "Item nao está presente";
+    return "ERRO: MENSAGEM INEXISTENTE";
   }
   if (chave < p->item.get_ID_MSG())
     return RemoveRecursivo(p->esq, chave);
@@ -69,16 +71,18 @@ void ArvoreBinaria::RemoveRecursivo(No*& p, int chave) {
       aux = p;
       p = p->esq;
       free(aux);
+      return "OK: MENSAGEM APAGADA";
     } else if (p->esq == nullptr) {
       aux = p;
       p = p->dir;
       free(aux);
+      return "OK: MENSAGEM APAGADA";
     } else
       Antecessor(p, p->esq);
   }
 };
 
-void ArvoreBinaria::Antecessor(No* q, No*& r) {
+string ArvoreBinaria::Antecessor(No* q, No*& r) {
   if (r->dir != nullptr) {
     Antecessor(q, r->dir);
     return;
@@ -87,4 +91,5 @@ void ArvoreBinaria::Antecessor(No* q, No*& r) {
   q = r;
   r = r->esq;
   free(q);
+  return "OK: MENSAGEM APAGADA";
 };

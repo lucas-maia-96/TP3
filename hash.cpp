@@ -4,23 +4,21 @@ Hash_AB::Hash_AB(int tam) { M = tam; };
 
 int Hash_AB::Hash(int chave) { return (chave % M); }
 
-email Hash_AB::Pesquisa(int chave) {
+string Hash_AB::Pesquisa(int id_user, int id_msg) {
   int pos;
-  email item;
-  pos = Hash(chave);
-  item = Tabela[pos].Pesquisa(chave);
-  return item;
+  pos = Hash(id_user);
+  return "CONSULTA: " + to_string(id_user) + " " + to_string(id_msg) + ": " +
+         Tabela[pos].Pesquisa(id_msg);
 };
 
-void Hash_AB::Insere(email item) {
-  email aux;
+string Hash_AB::Insere(email item) {
   int pos;
-  aux = Pesquisa(item.get_ID_MSG());
-  if (!aux.Vazio()) cout << "Erro: Item já está presente";
   pos = Hash(item.get_ID_MSG());
   Tabela[pos].Insere(item);
+  return "OK: MENSAGEM " + to_string(item.get_ID_MSG()) + " PARA " +
+         to_string(item.get_ID_USER()) + " ARMAZENADA EM " + to_string(pos);
 };
-void Hash_AB::Remove(int chave) {
+string Hash_AB::Remove(int chave) {
   int pos;
   pos = Hash(chave);
   Tabela[pos].Remove(chave);

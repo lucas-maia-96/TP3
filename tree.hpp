@@ -17,16 +17,16 @@ class ArvoreBinaria {
   ~ArvoreBinaria();
   void Insere(email item);
   void Caminha(int tipo);
-  email Pesquisa(int chave);
-  void Remove(int chave);
+  string Pesquisa(int chave);
+  string Remove(int chave);
   void Limpa();
 
  private:
   void InsereRecursivo(No*& p, email item);
   void ApagaRecursivo(No* p);
-  email PesquisaRecursivo(No* p, int chave);
-  void RemoveRecursivo(No*& p, int chave);
-  void Antecessor(No* q, No*& r);
+  string PesquisaRecursivo(No* p, int chave);
+  string RemoveRecursivo(No*& p, int chave);
+  string Antecessor(No* q, No*& r);
   void PorNivel();
 
   No* raiz;
