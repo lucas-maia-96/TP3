@@ -6,6 +6,12 @@ email::email() {
   mensagem = "";
 }
 
+email::email(int id_user, int id_msg, string msg) {
+  ID_USER = id_user;
+  ID_MSG = id_msg;
+  mensagem = msg;
+}
+
 int email::get_ID_USER() { return this->ID_USER; }
 
 void email::set_ID_USER(int id) { this->ID_USER = id; }
